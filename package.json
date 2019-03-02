@@ -1,6 +1,6 @@
 {
   "name": "graphtheoryapp",
-  "homepage": "https://DeclanCarter.github.io/graphtheoryapp",
+  "homepage": "https://DeclanCarter.github.io/GraphTheoryLearningApp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -b master -d dist"
   },
   "author": "DeclanCarter",
   "license": "ISC",
