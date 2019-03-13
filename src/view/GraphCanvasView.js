@@ -1,4 +1,3 @@
-"use strict";
 
 const CanvasHelper = require('../CanvasHelper');
 const Graph = require('../model/Graph');
@@ -6,8 +5,7 @@ const Position = require('../model/Position');
 
 class GraphCanvasView {
     /**
-     * @param {Graph} graph
-     * @param {HTMLCanvasElement} canvas
+     * 
      */
     constructor(graph, canvas) {
         this.graph = graph;
@@ -27,7 +25,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Vertex} vertex
+     *
      */
     setVertexAsSelected(vertex) {
         if (!this.graph.containsVertex(vertex)) {
@@ -39,7 +37,7 @@ class GraphCanvasView {
     };
 
     /**
-     * @return {Vertex|null}
+     *
      */
     getSelectedVertex() {
         return this.selectedVertex;
@@ -50,9 +48,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Position} position
-     * @return {Vertex|null}
-     * @private
+     * 
      */
     getVertexByPosition(position) {
         return this.graph.getVerticesList().find((vertex) => {
@@ -72,15 +68,14 @@ class GraphCanvasView {
     }
 
     /**
-     * @return {number}
+     * 
      */
     getVertexRadius() {
         return this.vertexRadius;
     }
 
     /**
-     * @param {Event} event
-     * @private
+     *
      */
     onClickListener(event) {
         const clickPosition = this.getEventPosition(event);
@@ -94,8 +89,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Event} event
-     * @private
+     * 
      */
     onContextMenuListener(event) {
         event.preventDefault();
@@ -124,8 +118,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Event} event
-     * @private
+     * 
      */
     onMousemoveListener(event) {
         const mousePosition = this.getEventPosition(event);
@@ -152,8 +145,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Event} event
-     * @private
+     * 
      */
     onMousedownListener(event) {
         const vertex = this.getVertexByPosition(this.getEventPosition(event));
@@ -166,9 +158,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Event} event
-     * @return {Position}
-     * @private
+     * 
      */
     getEventPosition(event) {
         const boundingClientRect = this.canvas.getBoundingClientRect();
@@ -180,8 +170,7 @@ class GraphCanvasView {
     }
 
     /**
-     * @param {Vertex} vertex
-     * @private
+     * 
      */
     drawVertex(vertex) {
         this.canvasHelper.drawCircle(vertex.getPosition(), this.vertexRadius, vertex.getId());
@@ -189,10 +178,7 @@ class GraphCanvasView {
 }
 
 /**
- * @param {Position} position
- * @param {Position} circlePosition
- * @param {number} circleRadius
- * @return {boolean}
+ * 
  */
 function checkPositionIsInCircle(position, circlePosition, circleRadius) {
     return Math.pow(position.getX() - circlePosition.getX(), 2)
@@ -201,8 +187,7 @@ function checkPositionIsInCircle(position, circlePosition, circleRadius) {
 }
 
 /**
- * @param {UndirectedEdge[]} edges
- * @return {Array}
+ * 
  */
 function groupEdgesByVertices(edges) {
     const hashMap = [];
@@ -229,8 +214,7 @@ function groupEdgesByVertices(edges) {
 
 
 /**
- * @param {Event} event
- * @return {boolean}
+ * 
  */
 function ctrlKeyIsPressed(event) {
     return event.ctrlKey || event.metaKey;
