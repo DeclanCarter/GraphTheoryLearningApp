@@ -22,7 +22,7 @@ class GraphConverter {
     /**
      *
      */
-    toIncidenceMatrix(graph) {
+   /*  toIncidenceMatrix(graph) {
         const edges = graph.getEdgesList();
         const vertices = graph.getVerticesList();
         const incidenceMatrix = createEmpty2dArray(vertices.length, edges.length);
@@ -41,7 +41,7 @@ class GraphConverter {
         }
 
         return incidenceMatrix;
-    };
+    }; */
 }
 
 /**

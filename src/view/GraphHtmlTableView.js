@@ -18,29 +18,29 @@ class GraphHtmlTableView {
      */
     setUpEventListeners() {
         this.graph.on(Graph.EVENT_VERTEX_CREATED,
-            this.rebuildAdjacencyListAction.bind(this),
-            this.rebuildAdjacencyMatrixAction.bind(this),
-            this.rebuildDegreesTable.bind(this)
+            /* this.rebuildAdjacencyListAction.bind(this), */
+            this.rebuildAdjacencyMatrixAction.bind(this)/* ,
+            this.rebuildDegreesTable.bind(this) */
         );
         this.graph.on(Graph.EVENT_EDGE_ADDED,
-            this.rebuildIncidenceMatrixAction.bind(this),
-            this.rebuildAdjacencyListAction.bind(this),
-            this.rebuildAdjacencyMatrixAction.bind(this),
-            this.rebuildDegreesTable.bind(this)
+            /* this.rebuildIncidenceMatrixAction.bind(this), */
+            /* this.rebuildAdjacencyListAction.bind(this), */
+            this.rebuildAdjacencyMatrixAction.bind(this)/* ,
+            this.rebuildDegreesTable.bind(this) */
         );
         this.graph.on(Graph.EVENT_VERTEX_DELETED,
-            this.rebuildAdjacencyListAction.bind(this),
-            this.rebuildAdjacencyMatrixAction.bind(this),
-            this.rebuildIncidenceMatrixAction.bind(this),
-            this.rebuildDegreesTable.bind(this)
+            /* this.rebuildAdjacencyListAction.bind(this), */
+            this.rebuildAdjacencyMatrixAction.bind(this)/* ,
+            this.rebuildIncidenceMatrixAction.bind(this) *//* ,
+            this.rebuildDegreesTable.bind(this) */
         );
     }
 
-    rebuildIncidenceMatrixAction() {
+    /* rebuildIncidenceMatrixAction() {
         const incidenceMatrix = this.graphConverter.toIncidenceMatrix(this.graph);
         document.getElementById('incidence-matrix-representation')
             .innerHTML = this.incidenceMatrixToHtmlTable(incidenceMatrix);
-    }
+    } */
 
     rebuildAdjacencyMatrixAction() {
         const adjacencyMatrix = this.graphConverter.toAdjacencyMatrix(this.graph);
@@ -48,20 +48,20 @@ class GraphHtmlTableView {
             .innerHTML = this.adjacencyMatrixToHtmlTable(adjacencyMatrix, this.graph.getVerticesList());
     }
 
-    rebuildAdjacencyListAction() {
+    /* rebuildAdjacencyListAction() {
         document.getElementById('adjacency-list-representation')
-            .innerHTML = this.buildAdjacencyListHtml(this.graph.getVerticesList());
-    }
+            .innerHTML = this.buildHtml(this.graph.getVerticesList());
+    } */
 
-    rebuildDegreesTable() {
+    /* rebuildDegreesTable() {
         document.getElementById('degrees-representation')
             .innerHTML = this.buildDegreesTable(this.graph.getVerticesList());
-    }
+    } */
 
     /**
      * 
      */
-    buildAdjacencyListHtml(vertices) {
+   /*  buildAdjacencyListHtml(vertices) {
         if (!vertices.length) {
             return '';
         }
@@ -86,7 +86,7 @@ class GraphHtmlTableView {
         const template = Handlebars.compile(source);
 
         return template({vertices});
-    }
+    } */
 
     /**
      * 
@@ -123,7 +123,7 @@ class GraphHtmlTableView {
     /**
      * 
      */
-    incidenceMatrixToHtmlTable(incidenceMatrix) {
+    /* incidenceMatrixToHtmlTable(incidenceMatrix) {
         if (!incidenceMatrix.length || incidenceMatrix.every(row => row.length === 0)) {
             return '';
         }
@@ -144,12 +144,12 @@ class GraphHtmlTableView {
         const template = Handlebars.compile(source);
 
         return template({incidenceMatrix});
-    }
+    } */
 
     /**
      * 
      */
-    buildDegreesTable(vertices) {
+ /*    buildDegreesTable(vertices) {
         const source = `<table>
             <tr>
                 <th></th>
@@ -168,7 +168,7 @@ class GraphHtmlTableView {
         const template = Handlebars.compile(source);
 
         return template({vertices});
-    }
+    } */
 }
 
 module.exports = GraphHtmlTableView;

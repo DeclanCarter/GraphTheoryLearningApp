@@ -1239,40 +1239,34 @@ var GraphHtmlTableView = function () {
     _createClass(GraphHtmlTableView, [{
         key: 'setUpEventListeners',
         value: function setUpEventListeners() {
-            this.graph.on(Graph.EVENT_VERTEX_CREATED, this.rebuildAdjacencyListAction.bind(this), this.rebuildAdjacencyMatrixAction.bind(this), this.rebuildDegreesTable.bind(this));
-            this.graph.on(Graph.EVENT_EDGE_ADDED, this.rebuildIncidenceMatrixAction.bind(this), this.rebuildAdjacencyListAction.bind(this), this.rebuildAdjacencyMatrixAction.bind(this), this.rebuildDegreesTable.bind(this));
-            this.graph.on(Graph.EVENT_VERTEX_DELETED, this.rebuildAdjacencyListAction.bind(this), this.rebuildAdjacencyMatrixAction.bind(this), this.rebuildIncidenceMatrixAction.bind(this), this.rebuildDegreesTable.bind(this));
+            this.graph.on(Graph.EVENT_VERTEX_CREATED, /* this.rebuildAdjacencyListAction.bind(this), */ this.rebuildAdjacencyMatrixAction.bind(this)/* , this.rebuildDegreesTable.bind(this) */);
+            this.graph.on(Graph.EVENT_EDGE_ADDED, /* this.rebuildIncidenceMatrixAction.bind(this), */ /* this.rebuildAdjacencyListAction.bind(this), */ this.rebuildAdjacencyMatrixAction.bind(this)/* , this.rebuildDegreesTable.bind(this) */);
+            this.graph.on(Graph.EVENT_VERTEX_DELETED, /* this.rebuildAdjacencyListAction.bind(this), */ this.rebuildAdjacencyMatrixAction.bind(this)/* , this.rebuildIncidenceMatrixAction.bind(this) *//* , this.rebuildDegreesTable.bind(this) */);
         }
-    }, {
+    }, /* {
         key: 'rebuildIncidenceMatrixAction',
         value: function rebuildIncidenceMatrixAction() {
             var incidenceMatrix = this.graphConverter.toIncidenceMatrix(this.graph);
             document.getElementById('incidence-matrix-representation').innerHTML = this.incidenceMatrixToHtmlTable(incidenceMatrix);
         }
-    }, {
+    }, */ {
         key: 'rebuildAdjacencyMatrixAction',
         value: function rebuildAdjacencyMatrixAction() {
             var adjacencyMatrix = this.graphConverter.toAdjacencyMatrix(this.graph);
             document.getElementById('adjacency-matrix-representation').innerHTML = this.adjacencyMatrixToHtmlTable(adjacencyMatrix, this.graph.getVerticesList());
         }
-    }, {
+    }, /* {
         key: 'rebuildAdjacencyListAction',
         value: function rebuildAdjacencyListAction() {
             document.getElementById('adjacency-list-representation').innerHTML = this.buildAdjacencyListHtml(this.graph.getVerticesList());
         }
-    }, {
+    }, */ /* {
         key: 'rebuildDegreesTable',
         value: function rebuildDegreesTable() {
             document.getElementById('degrees-representation').innerHTML = this.buildDegreesTable(this.graph.getVerticesList());
         }
 
-        /**
-         * @param {Vertex[]} vertices
-         * @return {string}
-         * @private
-         */
-
-    }, {
+    }, */ /* {
         key: 'buildAdjacencyListHtml',
         value: function buildAdjacencyListHtml(vertices) {
             if (!vertices.length) {
@@ -1284,16 +1278,11 @@ var GraphHtmlTableView = function () {
             var template = Handlebars.compile(source);
 
             return template({ vertices: vertices });
-        }
+        } */
 
-        /**
-         * @param {Array} adjacencyMatrix
-         * @param {Vertex[]} vertices
-         * @return {string}
-         * @private
-         */
-
-    }, {
+  
+/* 
+    }, */ {
         key: 'adjacencyMatrixToHtmlTable',
         value: function adjacencyMatrixToHtmlTable(adjacencyMatrix, vertices) {
             if (!vertices.length) {
@@ -1317,7 +1306,7 @@ var GraphHtmlTableView = function () {
          * @private
          */
 
-    }, {
+    }, /* {
         key: 'incidenceMatrixToHtmlTable',
         value: function incidenceMatrixToHtmlTable(incidenceMatrix) {
             if (!incidenceMatrix.length || incidenceMatrix.every(function (row) {
@@ -1333,13 +1322,8 @@ var GraphHtmlTableView = function () {
             return template({ incidenceMatrix: incidenceMatrix });
         }
 
-        /**
-         * @param {Vertex[]} vertices
-         * @return {string}
-         * @private
-         */
 
-    }, {
+    }, */ /* {
         key: 'buildDegreesTable',
         value: function buildDegreesTable(vertices) {
             var source = '<table>\n            <tr>\n                <th></th>\n                <th>In degree</th>\n                <th>Out degree</th>\n            </tr>\n            {{#each vertices}}\n            <tr>\n                <td>{{ getId }}</td>\n                <td>{{ getInDegree }}</td>\n                <td>{{ getOutDegree }}</td>\n            </tr>\n            {{/each}}\n        </table>';
@@ -1348,7 +1332,7 @@ var GraphHtmlTableView = function () {
 
             return template({ vertices: vertices });
         }
-    }]);
+    } */]);
 
     return GraphHtmlTableView;
 }();
@@ -6426,7 +6410,7 @@ var GraphConverter = function () {
          * @return {Array}
          */
 
-    }, {
+    }/* , {
         key: "toIncidenceMatrix",
         value: function toIncidenceMatrix(graph) {
             var edges = graph.getEdgesList();
@@ -6448,7 +6432,7 @@ var GraphConverter = function () {
 
             return incidenceMatrix;
         }
-    }]);
+    } */]);
 
     return GraphConverter;
 }();
